@@ -84,23 +84,23 @@ def sendEmail(to,conetnt):
     server = smtplib.SMTP("smtp.gmail.com",587)
     server.ehlo()
     server.starttls()
-    server.login('vaishnavikulkarni1436@gmail.com','Vaishnavi   1234567890.')
-    server.sendmail('vaishnavikulkarni1436@gmail.com',to,content)
+    server.login(' Your Email','Password')
+    server.sendmail('Your Email',to,content)
     server.close()
 
 #define user
 def define_user():
-     speak("Hello I am Robert is that you Vaishnavi")
+     speak("Hello I am Robert is that you")
      cmdforuser = take_command().lower()
      if cmdforuser == "yes":
-         user = "Vaishnavi"
+         user = "username"
          speak("Tell me secret 4 digit code")
          code = take_command().lower()
-         if code == "3579":
-             user = "Vaishnavi"
-             speak("Hey Vaishnavi")
+         if code == "code":
+             user = "username"
+             speak("Hey username")
          else:
-             speak("Get Lost you think I am fool")
+             speak("Wrong Password")
              playsound('D:\\music\\mixkit-alert-alarm-1005.wav')
              sys.exit()
      elif cmdforuser == "wrong":
@@ -138,24 +138,24 @@ if __name__ == "__main__":
 
 #open notepad
             if 'open notepad' in query or 'open a notepad' in query or 'notepad' in query:
-                npath = "C:\\Windows\\system32\\notepad.exe"
+                npath = ""
                 speak("Opening Notepad")
                 os.startfile(npath)
 #close notepad
             elif 'close notepad' in query or 'close a notepad' in query:
                 speak("Closing Notepad")
-                os.system("taskkill /f /im notepad.exe")
+                os.system("")
 
 #open Spotify
             elif 'open spotify' in query or 'open a spotify' in query:
-                spath = "C:\\Users\\VAISHNAVI\\Desktop\\spotify.lnk"
+                spath = ""
                 speak("Opening Spotify")
                 os.startfile(spath)
 
 # close spotify
             elif 'close spotify' in query or 'close a spotify' in query:
                 speak("Closing Spotify")
-                os.system("taskkill /f /im spotify.lnk")
+                os.system("")
 
 #open cmd
             elif 'open cmd' in query or 'open command prompt' in query:
@@ -169,7 +169,7 @@ if __name__ == "__main__":
 
 #open ggogle chrom
             elif 'open google chrome' in query or 'open chrome' in query or 'open a google chrome' in query or 'open a chrome' in query:
-                chromepath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+                chromepath = ""
                 speak("Opening Google Chrome")
                 os.startfile(chromepath)
 #close google chrome
@@ -179,7 +179,7 @@ if __name__ == "__main__":
 
 #open vsdc
             elif 'open vsdc' in query or 'open a vsdc' in query or 'open video editor' in query:
-                vsdcpath = "D:\\FlashIntegro\\VideoEditor\\VideoEditor.exe"
+                vsdcpath = ""
                 speak("Opening VSDC")
                 os.startfile(vsdcpath)
 #close vsdc
@@ -189,13 +189,13 @@ if __name__ == "__main__":
 #open PPT
 
             elif 'open presentation' in query or 'open power point presentation' in query or 'open ppt' in query:
-                preepath = "C:\\Program Files\\Microsoft Office\\root\\Office16\\POWERPNT.exe"
+                preepath = ""
                 speak("Opening PPT")
                 os.startfile(preepath)
 #close PPT
             elif 'close presentation' in query or 'open power point presentation' in query or 'open ppt' in query:
                 speak("Closing Power point")
-                os.system("taskkill /f /im POWERPNT.exe")
+                os.system("")
 #play music
             elif 'play music' in query or 'play songs' in query:
                 music_dir = "D:\\music"
@@ -224,43 +224,43 @@ if __name__ == "__main__":
 
             elif 'open my youtube channel' in query or 'open my channel' in query or 'open youtube channel' in query or 'youtube channel' in query:
                 speak("Opening Your YotubeStudio")
-                webbrowser.open("https://www.youtube.com/channel/UCt5wGJ2ESeyMy4LGYZtOZ-Q")
+                webbrowser.open("")
             elif 'open my youtube studio' in query:
                 speak("Opening Your YotubeStudio")
-                webbrowser.open("https://studio.youtube.com/channel/UCt5wGJ2ESeyMy4LGYZtOZ-Q/editing/sections")
+                webbrowser.open("")
 
  #open facebook
             elif 'open my facebook' in query or 'open facebook' in query or 'facebook' in query:
                 if c == "Vaishnavi":
                     speak("Opening Your Facebook")
-                    webbrowser.open("https://www.facebook.com/")
+                    webbrowser.open("")
                 else:
                     speak(f"Sorry {c} you are not authenticated user")
 
 # close facebook
             elif 'close my facebook' in query or 'close facebook' in query:
                 speak("Closing Your Facebook")
-                os.system("taskkill /f /im chrome.exe")
+                os.system("")
 
 #open instagram
 
             elif 'open my insta' in query or 'open my instagram' in query:
                 speak("Opening Your Instagram")
-                webbrowser.open("https://www.instagram.com/?hl=en")
+                webbrowser.open("")
 
 
 #whatsapp
             elif 'open whatsapp' in query or 'open my whatsapp' in query or 'whatsapp' in query:
                 if c == "Vaishnavi":
                     speak("Opening Your WhatsApp")
-                    webbrowser.open("https://web.whatsapp.com/")
+                    webbrowser.open("")
                 else:
                     speak(f"Sorry {c} you are not authenticated user")
 
 #closing whatsapp
             elif 'close my whatsapp' in query or 'close whatsapp' in query:
                 speak("Closing Your Whatsapp")
-                os.system("taskkill /f /im chrome.exe")
+                os.system("")
 
 
 #search in google
@@ -273,7 +273,7 @@ if __name__ == "__main__":
 
 #send msg
             elif 'send message' in query or 'send a message' in query:
-                if c == "Vaishnavi":
+                if c == "":
                     speak("Tell me what do you want to send ")
                     sm = take_command().lower()
                     speak("Tell me on what time you want to send message")
@@ -300,10 +300,10 @@ if __name__ == "__main__":
 
 #play song on spotify
             elif 'play song on spotify' in query:
-                username = '312avemugiot4zaiil5ngurszkna'
-                clientID = '4d988266361d4cbc9dea64d1146a7e18'
-                clientSecret = 'df0ab727fc0148ad88b8fbfcc29b7dbf'
-                redirectURI = 'http://google.com/'
+                username = ''
+                clientID = ''
+                clientSecret = ''
+                redirectURI = ''
                 oauth_object = spotipy.SpotifyOAuth(clientID, clientSecret, redirectURI)
                 token_dict = oauth_object.get_access_token()
                 token = token_dict['access_token']
@@ -333,13 +333,13 @@ if __name__ == "__main__":
 
                 except Exception as e:
                         print(e)
-                        print("Sorry Vaish..You are not connected to internet")
+                        print("Sorry..You are not connected to internet")
 
 #telling joke
             elif 'tell me a joke' in query:
                 joke = pyjokes.get_joke(language='en',category='all')
                 speak(joke)
-                playsound('D:\\music\\mixkit-crowd-laugh-424.wav')
+                playsound('')
 
 #ip address
             elif 'what is my ip address' in query or 'ip address' in query or'my ip address' in query:
@@ -362,9 +362,9 @@ if __name__ == "__main__":
             elif 'where i am' in query or 'location' in query or 'what is my location' in query:
                 speak("wait Mam,let me check")
                 try:
-                    ipAdd = requests.get('https://api.ipify.org').text
+                    ipAdd = requests.get('').text
                     print(ipAdd)
-                    uri = 'https://get.geojs.io/v1/ip/geo/'+ipAdd+'.json'
+                    uri = ''
                     geo_requests = requests.get(uri)
                     geo_data = geo_requests.json()
                     #print geo(data)
