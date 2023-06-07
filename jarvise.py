@@ -1,0 +1,402 @@
+import json
+import webbrowser
+import news as news
+import pyautogui
+import pyttsx3
+import requests
+import speech_recognition as sr
+import datetime
+import os
+import random
+import pyjokes
+import spotipy
+import wikipedia
+import pywhatkit as kit
+import smtplib
+import sys
+from playsound import playsound
+from requests import get
+    from datetime import time
+from bs4 import BeautifulSoup
+    
+    
+    
+engine = pyttsx3.init('sapi5')
+voices = engine.getProperty("voices")
+print(voices[0].id)
+engine.setProperty('voice', voices[0].id)
+engine.setProperty("rate",175)
+    
+    
+    #text to speech
+def speak(audio):
+    engine.say(audio)
+    engine.runAndWait()
+    
+    #speech to text
+def take_command():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        # speak("Listening..")
+        r.pause_threshold = 1
+        audio = r.listen(source, timeout=2, phrase_time_limit=3)
+
+    try:
+        print("Recognizing....")
+        query = r.recognize_google(audio, language='en-IN')
+        print(f"user said:{query}")
+
+
+    except Exception as e:
+        speak(f"Can you please repeat again... {c}")
+        return "none"
+    return query
+
+#wishing function
+def wish():
+    timee = datetime.datetime.now().hour
+    timeem = datetime.datetime.now().minute
+    hour = int(datetime.datetime.now().hour)
+
+
+    search = "temperature in Pune"
+    url = f"https://www.google.com/search?q={search}"
+    r = requests.get(url)
+    data = BeautifulSoup(r.text,"html.parser")
+    temp = data.find("div",class_="BNeawe").text
+    print(f"Current temperature in {search} is {temp}")
+    speak(f"Current {search} is {temp}")
+
+
+    if hour>=0 and hour<12:
+        speak(f"Good Morning {c} its {timee}{timeem}AM")
+
+    elif hour>=12 and hour<16:
+        speak(f"Good Afternon {c} its {timee}{timeem}PM")
+
+    else:
+        speak(f"Good Evening {c} its {timee}{timeem}PM")
+    speak(f"How may I help you {c}")
+
+#to send email
+def sendEmail(to,conetnt):
+    server = smtplib.SMTP("smtp.gmail.com",587)
+    server.ehlo()
+    server.starttls()
+    server.login('vaishnavikulkarni1436@gmail.com','Vaishnavi   1234567890.')
+    server.sendmail('vaishnavikulkarni1436@gmail.com',to,content)
+    server.close()
+
+#define user
+def define_user():
+     speak("Hello I am Robert is that you Vaishnavi")
+     cmdforuser = take_command().lower()
+     if cmdforuser == "yes":
+         user = "Vaishnavi"
+         speak("Tell me secret 4 digit code")
+         code = take_command().lower()
+         if code == "3579":
+             user = "Vaishnavi"
+             speak("Hey Vaishnavi")
+         else:
+             speak("Get Lost you think I am fool")
+             playsound('D:\\music\\mixkit-alert-alarm-1005.wav')
+             sys.exit()
+     elif cmdforuser == "wrong":
+         speak("Oh Sorry Tell me What is your name")
+         user = take_command().lower()
+         speak(f"Ok I will Call you {user}")
+     elif cmdforuser == "no":
+         speak("Oh Sorry Tell me What is your name")
+         user = take_command().lower()
+         speak(f"Ok I will Call you {user}")
+     return user
+
+#starting Robert
+def starting_robert():
+    speak("Initializing Robert")
+    speak("Starting all systems applications")
+    speak("Installing and checking all drivers")
+    speak("Caliberating and examining all the core processors")
+    speak("Checking the internet connection")
+    speak(f"Wait a moment")
+    speak("All drivers are up and running")
+    speak("All systems have been activated")
+    speak("Now I am online")
+    hour = int(datetime.datetime.now().hour)
+if __name__ == "__main__":
+    starting_robert()
+    c = define_user()
+    wish()
+
+    while True:
+        if 1:
+            query = take_command().lower()
+
+#logic building for task
+
+#open notepad
+            if 'open notepad' in query or 'open a notepad' in query or 'notepad' in query:
+                npath = "C:\\Windows\\system32\\notepad.exe"
+                speak("Opening Notepad")
+                os.startfile(npath)
+#close notepad
+            elif 'close notepad' in query or 'close a notepad' in query:
+                speak("Closing Notepad")
+                os.system("taskkill /f /im notepad.exe")
+
+#open Spotify
+            elif 'open spotify' in query or 'open a spotify' in query:
+                spath = "C:\\Users\\VAISHNAVI\\Desktop\\spotify.lnk"
+                speak("Opening Spotify")
+                os.startfile(spath)
+
+# close spotify
+            elif 'close spotify' in query or 'close a spotify' in query:
+                speak("Closing Spotify")
+                os.system("taskkill /f /im spotify.lnk")
+
+#open cmd
+            elif 'open cmd' in query or 'open command prompt' in query:
+                speak("Opening Command Prompt")
+                os.system("start cmd")
+
+#close cmd
+            elif 'close cmd' in query or 'open command prompt' in query:
+                speak("Closing CMD")
+                # os.system("exit cmd")
+
+#open ggogle chrom
+            elif 'open google chrome' in query or 'open chrome' in query or 'open a google chrome' in query or 'open a chrome' in query:
+                chromepath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+                speak("Opening Google Chrome")
+                os.startfile(chromepath)
+#close google chrome
+            elif 'close google chrome' in query or 'close chrome' in query or 'close a google chrome' in query or 'close a chrome' in query:
+                speak("Closing Google Chrome")
+                os.system("taskkill /f /im chrome.exe")
+
+#open vsdc
+            elif 'open vsdc' in query or 'open a vsdc' in query or 'open video editor' in query:
+                vsdcpath = "D:\\FlashIntegro\\VideoEditor\\VideoEditor.exe"
+                speak("Opening VSDC")
+                os.startfile(vsdcpath)
+#close vsdc
+            elif 'close vsdc' in query or 'close a vsdc' in query or 'close video editor' in query:
+                speak("Closing VSDC")
+                os.system("taskkill /f /im VideoEditor.exe")
+#open PPT
+
+            elif 'open presentation' in query or 'open power point presentation' in query or 'open ppt' in query:
+                preepath = "C:\\Program Files\\Microsoft Office\\root\\Office16\\POWERPNT.exe"
+                speak("Opening PPT")
+                os.startfile(preepath)
+#close PPT
+            elif 'close presentation' in query or 'open power point presentation' in query or 'open ppt' in query:
+                speak("Closing Power point")
+                os.system("taskkill /f /im POWERPNT.exe")
+#play music
+            elif 'play music' in query or 'play songs' in query:
+                music_dir = "D:\\music"
+                songs = os.listdir(music_dir)
+                rd = random.choice(songs)
+                speak("Playing music")
+                for song in songs:
+                    if song.endswith('.mp3'):
+                        os.startfile(os.path.join(music_dir, song))
+
+
+#search
+            elif 'according to wikipedia' in query:
+                speak("Searching in Wikipedia...")
+                query = query.replace("wikipedia","")
+                results = wikipedia.summary(query,sentences=2)
+                speak(f"{c} According to wikipedeia")
+                speak(results)
+                print(results)
+
+#open youtube
+            elif 'open youtube' in query or 'youtube' in query:
+                speak("Opening Youtube")
+                webbrowser.open("www.youtube.com")
+#open youtube studio
+
+            elif 'open my youtube channel' in query or 'open my channel' in query or 'open youtube channel' in query or 'youtube channel' in query:
+                speak("Opening Your YotubeStudio")
+                webbrowser.open("https://www.youtube.com/channel/UCt5wGJ2ESeyMy4LGYZtOZ-Q")
+            elif 'open my youtube studio' in query:
+                speak("Opening Your YotubeStudio")
+                webbrowser.open("https://studio.youtube.com/channel/UCt5wGJ2ESeyMy4LGYZtOZ-Q/editing/sections")
+
+ #open facebook
+            elif 'open my facebook' in query or 'open facebook' in query or 'facebook' in query:
+                if c == "Vaishnavi":
+                    speak("Opening Your Facebook")
+                    webbrowser.open("https://www.facebook.com/")
+                else:
+                    speak(f"Sorry {c} you are not authenticated user")
+
+# close facebook
+            elif 'close my facebook' in query or 'close facebook' in query:
+                speak("Closing Your Facebook")
+                os.system("taskkill /f /im chrome.exe")
+
+#open instagram
+
+            elif 'open my insta' in query or 'open my instagram' in query:
+                speak("Opening Your Instagram")
+                webbrowser.open("https://www.instagram.com/?hl=en")
+
+
+#whatsapp
+            elif 'open whatsapp' in query or 'open my whatsapp' in query or 'whatsapp' in query:
+                if c == "Vaishnavi":
+                    speak("Opening Your WhatsApp")
+                    webbrowser.open("https://web.whatsapp.com/")
+                else:
+                    speak(f"Sorry {c} you are not authenticated user")
+
+#closing whatsapp
+            elif 'close my whatsapp' in query or 'close whatsapp' in query:
+                speak("Closing Your Whatsapp")
+                os.system("taskkill /f /im chrome.exe")
+
+
+#search in google
+            elif 'open google' in query:
+                speak(f"Tell me {c} What do you want to search")
+                cm = take_command().lower()
+                speak("Searching In Google")
+                webbrowser.open(f"{cm}")
+
+
+#send msg
+            elif 'send message' in query or 'send a message' in query:
+                if c == "Vaishnavi":
+                    speak("Tell me what do you want to send ")
+                    sm = take_command().lower()
+                    speak("Tell me on what time you want to send message")
+                    hm = int(take_command().lower())
+                    speak("Tell me on what time you want to send message in minutes")
+                    mm = int(take_command().lower())
+                    speak("Sending Message")
+                    kit.sendwhatmsg("+91937", f"{sm}", hm, mm)
+                else:
+                    speak(f"Sorry {c} you aer not authenticated user")
+
+#play video on youtube
+            elif 'play video on youtube' in query or 'play a video on youtube' in query:
+                speak("Which Video you want to play")
+                videop = take_command().lower()
+                speak("playing video on youtube..")
+                kit.playonyt(f"{videop}")
+
+#close Youtube
+            elif 'close Youtube' in query or 'close a Youtube' in query:
+                speak("Closing Youtube")
+                os.system("taskkill /f /im chrome.exe")
+
+
+#play song on spotify
+            elif 'play song on spotify' in query:
+                username = '312avemugiot4zaiil5ngurszkna'
+                clientID = '4d988266361d4cbc9dea64d1146a7e18'
+                clientSecret = 'df0ab727fc0148ad88b8fbfcc29b7dbf'
+                redirectURI = 'http://google.com/'
+                oauth_object = spotipy.SpotifyOAuth(clientID, clientSecret, redirectURI)
+                token_dict = oauth_object.get_access_token()
+                token = token_dict['access_token']
+                spotifyObject = spotipy.Spotify(auth=token)
+                user = spotifyObject.current_user()
+                print(json.dumps(user, sort_keys=True, indent=4))
+                speak("Which song Do you want to play?")
+                searchQuery = take_command().lower()
+                # Search for the Song.
+                searchResults = spotifyObject.search(searchQuery, 1, 0, "track")
+                # Get required data from JSON response.
+                tracks_dict = searchResults['tracks']
+                tracks_items = tracks_dict['items']
+                song = tracks_items[0]['external_urls']['spotify']
+                # Open the Song in Web Browser
+                speak(f"Playing {searchQuery}")
+                webbrowser.open(song)
+
+            elif 'send email' in query:
+                try:
+                    speak("Tell me Message what do you want to send")
+                    content = take_command().lower()
+                    speak("Tell me whom you want to send mail")
+                    to = take_command().lower()
+                    sendEmail(to,content)
+                    speak("Email has been sent Vaish...")
+
+                except Exception as e:
+                        print(e)
+                        print("Sorry Vaish..You are not connected to internet")
+
+#telling joke
+            elif 'tell me a joke' in query:
+                joke = pyjokes.get_joke(language='en',category='all')
+                speak(joke)
+                playsound('D:\\music\\mixkit-crowd-laugh-424.wav')
+
+#ip address
+            elif 'what is my ip address' in query or 'ip address' in query or'my ip address' in query:
+                ip = get('https://www.ipify.org/').text
+                speak(f"Your IP address is {ip}")
+
+
+#switch the window
+            elif 'switch the window' in query or 'switch window' in query:
+                pyautogui.keyDown("alt")
+                pyautogui.press("tab")
+                # time.sleep(1)
+                pyautogui.keyUp("alt")
+#tell me news
+            elif 'give me news updates' in query or 'news updates' in query:
+                speak("Please wait Mam fetching news")
+
+
+#To find the location uisng
+            elif 'where i am' in query or 'location' in query or 'what is my location' in query:
+                speak("wait Mam,let me check")
+                try:
+                    ipAdd = requests.get('https://api.ipify.org').text
+                    print(ipAdd)
+                    uri = 'https://get.geojs.io/v1/ip/geo/'+ipAdd+'.json'
+                    geo_requests = requests.get(uri)
+                    geo_data = geo_requests.json()
+                    #print geo(data)
+                    city = geo_data['city']
+                    country = geo_data['country']
+                    speak(f"Vaishnavi I am not sure but I think we are in {city} {country}")
+                except Exception as e:
+                    speak("Sorry Due to network issue I am not be able to fetch location")
+                    pass
+#take a screenshot
+            elif 'take screenshot' in query or 'take a screenshot' in query:
+                speak("Please tell me name for this screenshot")
+                name = take_command().lower()
+                speak("Vaish Please hold a screen for a minute I am taking screenshot")
+                time.sleep(3)
+                img = pyautogui.screenshot()
+                img.save(f"{name}.png")
+                speak("Done Vaishnavi The screenshot is stored in main folder ")
+
+
+#introducing you
+            elif 'what is my name' in query or 'my name is' in query:
+                speak(f"Your Name is {c}.")
+
+#closing jarvis
+            elif 'no' in query or 'Bye' in query or 'No thanks' in query or 'no bye' in query or 'no thanks bye' in query or 'nothing'in query or 'ok bye'in query or "no thats it" in query:
+                speak(f"Thank you {c} Bye bye Have a nice day")
+                sys.exit()
+
+
+
+
+
+
+
