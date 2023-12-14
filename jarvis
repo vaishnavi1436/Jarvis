@@ -84,8 +84,8 @@ def sendEmail(to,conetnt):
     server = smtplib.SMTP("smtp.gmail.com",587)
     server.ehlo()
     server.starttls()
-    server.login('vaishnavikulkarni1436@gmail.com','Vaishnavi   1234567890.')
-    server.sendmail('vaishnavikulkarni1436@gmail.com',to,content)
+    server.login('email','passwod')
+    server.sendmail('sender mail',to,content)
     server.close()
 
 #define user
@@ -251,7 +251,7 @@ if __name__ == "__main__":
 
 #whatsapp
             elif 'open whatsapp' in query or 'open my whatsapp' in query or 'whatsapp' in query:
-                if c == "Vaishnavi":
+                if c == "":
                     speak("Opening Your WhatsApp")
                     webbrowser.open("https://web.whatsapp.com/")
                 else:
